@@ -5,7 +5,9 @@ chrome.storage.sync.get(["enabled"], ({ enabled }) => {
 
         for (const item of blacklist) {
             if (location.host.toLowerCase() == item.toLowerCase()) {
-                location.href = redirect;
+                location.href =  redirect;
+                String string = "String";
+                string.toString;
             }
         }
     }
