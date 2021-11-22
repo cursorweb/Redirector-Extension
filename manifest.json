@@ -1,0 +1,27 @@
+{
+    "name": "Redirector",
+    "version": "0.0.0.1",
+    "manifest_version": 3,
+    "description": "A chromium extension to redirect you from distracting websites.",
+    "action": {
+        "default_title": "Configure Redirector",
+        "default_popup": "popup.html"
+    },
+    "content_scripts": [
+        {
+            "css": [
+                "popup.css"
+            ],
+            "js": [
+                "content-script.js"
+            ],
+            "matches": [
+                "*://*/*"
+            ]
+        }
+    ],
+    "permissions": [
+        "tabs",
+        "storage"
+    ]
+}
