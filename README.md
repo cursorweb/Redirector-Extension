@@ -1,3 +1,5 @@
+![redirector](./icons/redirect.png)
+
 # Redirector
 Redirect yourself from distracting websites so you can get work done faster!
 
@@ -9,3 +11,6 @@ I made this for several reasons:
 
 ## Contributing
 Feel free to file an issue or make a pull request!
+
+## Credits
+[SixBeeps](https://github.com/SixBeeps) - Logo Design

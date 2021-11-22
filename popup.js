@@ -1,4 +1,4 @@
-const btn = document.querySelector(".item");
+const btn = document.querySelector(".enable-btn");
 
 chrome.storage.sync.get(["enabled"], ({ enabled }) => {
     if (enabled == null) {
