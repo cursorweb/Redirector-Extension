@@ -12,14 +12,12 @@
     },
 
     "action": {
-        "default_title": "Configure Redirector"
+        "default_title": "Configure Redirector",
+        "default_popup": "popup/popup.html"
     },
 
     "content_scripts": [
         {
-            "css": [
-                "popup.css"
-            ],
             "js": [
                 "content-script.js"
             ],
@@ -33,10 +31,6 @@
         "tabs",
         "storage"
     ],
-
-    "background": {
-        "service_worker": "background.js"
-    },
 
     "manifest_version": 3
 }
