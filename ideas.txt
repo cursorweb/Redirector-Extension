@@ -1,0 +1,15 @@
+Main
+    - Click to cycle between disabled, enabled, timer
+        - Right click to cycle back
+
+Options
+    - About
+    - Advanced Mode
+        - Cycle disabled, enabled, timer
+        - Config timer time (only when timer is set)
+        - Reset options
+        - Reset blacklist
+        - Reset whitelist
+        - Reset all
+    - Blacklist
+    - Whitelist
