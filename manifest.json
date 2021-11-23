@@ -19,8 +19,8 @@
     "content_scripts": [
         {
             "js": [
-                "content-script.js",
-                "popup/util/config.js"
+                "popup/util/config.js",
+                "content-script.js"
             ],
             "matches": [
                 "*://*/*"

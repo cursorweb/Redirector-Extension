@@ -1,14 +1,24 @@
-// window.onload = () => {
-//     const blacklists = document.querySelector(".blacklists");
-//     const redirects = document.querySelector(".redirects");
+const blacklists = document.querySelector(".blacklists");
+const redirects = document.querySelector(".redirects");
 
-//     chrome.storage.sync.get(["options"], ({ options }) => {
-//         for (const site of options.blackList) {
-//             blacklists.innerHTML += site + "<br>";
-//         }
+chrome.storage.sync.get(keys, options => {
+    blacklists.textContent = "";
+    for (const site of options.blacklist) {
+        const el = document.createElement("input");
+        el.classList.add("input", "blacklist");
+        el.value = site;
+        el.placeholder = "Domain only, e.g. 'www.youtube.com'.";
 
-//         for (const site of options.redirects) {
-//             redirects.innerHTML += site + "<br>";
-//         }
-//     });
-// };
+        blacklists.appendChild(el);
+    }
+
+    redirects.textContent = "";
+    for (const site of options.redirects) {
+        const el = document.createElement("input");
+        el.classList.add("input", "redirects");
+        el.value = site;
+        el.placeholder = "Enter a url...";
+
+        redirects.appendChild(el);
+    }
+});

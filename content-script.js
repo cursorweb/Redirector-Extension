@@ -1,4 +1,4 @@
-chrome.storage.sync.get(["enabled", "blacklist", "redirects", "time"], options => {
+chrome.storage.sync.get(keys, options => {
     let enabled = options.enabled;
 
     // check if database is empty
@@ -7,7 +7,7 @@ chrome.storage.sync.get(["enabled", "blacklist", "redirects", "time"], options =
         chrome.storage.sync.set(defaultOptions);
     }
 
-    if (enabled) {
+    if (enabled == 1) {
         const blacklist = ["www.reddit.com", "www.youtube.com", "discord.com"];
         const redirect = "https://classroom.google.com/";
 

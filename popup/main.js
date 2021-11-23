@@ -1,9 +1,7 @@
 /** @type {HTMLButtonElement} */
 const btn = document.querySelector(".enable-btn");
 
-chrome.storage.sync.clear();
-
-chrome.storage.sync.get(["enabled", "blacklist", "redirects", "time"], options => {
+chrome.storage.sync.get(keys, options => {
     let opts = options;
 
     if (!Object.keys(opts).length) {

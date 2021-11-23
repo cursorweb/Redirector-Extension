@@ -9,3 +9,5 @@ const defaultOptions = {
     redirects: ["classroom.google.com", "www.desmos.com", "trello.com", "keep.google.com"],
     time: 20 * 60 * 1000 // 20 minutes
 };
+
+const keys = Object.keys(defaultOptions);
