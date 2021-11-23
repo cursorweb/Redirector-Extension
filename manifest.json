@@ -2,7 +2,7 @@
     "author": "Coder100",
 
     "name": "Redirector",
-    "version": "0.0.0.1",
+    "version": "0.0.1",
     "description": "A chromium extension to redirect you from distracting websites.",
     
     "icons": {
@@ -13,13 +13,14 @@
 
     "action": {
         "default_title": "Configure Redirector",
-        "default_popup": "popup/popup.html"
+        "default_popup": "popup/main.html"
     },
 
     "content_scripts": [
         {
             "js": [
-                "content-script.js"
+                "content-script.js",
+                "popup/util/config.js"
             ],
             "matches": [
                 "*://*/*"

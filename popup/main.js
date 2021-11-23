@@ -1,23 +1,27 @@
-/**
- * @type {HTMLButtonElement}
- */
+/** @type {HTMLButtonElement} */
 const btn = document.querySelector(".enable-btn");
 
-chrome.storage.sync.get(["enabled"], ({ enabled }) => {
-    if (enabled == null) {
-        chrome.storage.sync.set({
-            enabled: true
-        });
+chrome.storage.sync.clear();
+
+chrome.storage.sync.get(["enabled", "blacklist", "redirects", "time"], options => {
+    let opts = options;
+
+    if (!Object.keys(opts).length) {
+        chrome.storage.sync.set(defaultOptions);
+
+        opts = defaultOptions;
     }
+
+    let { enabled } = opts;
 
     updateBtn();
 
     btn.addEventListener("click", () => {
-        enabled = !enabled;
+        options.enabled = enabled = (enabled + 1) % 3;
 
         btn.disabled = true;
 
-        chrome.storage.sync.set({ enabled }, () => {
+        chrome.storage.sync.set(opts, () => {
             btn.disabled = false;
             updateBtn();
 
@@ -28,8 +32,8 @@ chrome.storage.sync.get(["enabled"], ({ enabled }) => {
     });
 
     function updateBtn() {
-        btn.innerHTML = `${enabled ? "Disable" : "Enable"} Redirector`;
-        if (enabled) {
+        btn.innerHTML = `Redirector ${["Disabled", "Enabled", "on Timer"][enabled]}`;
+        if (enabled == 0) {
             btn.classList.add("red");
             btn.classList.remove("green");
         }
