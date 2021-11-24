@@ -21,12 +21,32 @@
         <p>Every <strong>Blacklisted Website</strong> is redirected to a a random <strong>Redirect Website</strong>.</p>
         
         <h2>Blacklisted Websites</h2>
+
+        <div class="nav">
+            <input type="text" placeholder="Domain only, e.g. 'www.youtube.com'." class="blacklist-input">
+            <button class="add-btn-bl">+ Add Site (Enter)</button>
+        </div>
         <div class="blacklists">Loading...</div>
         
         <h2>Redirect Websites</h2>
+        <div class="nav">
+            <input type="text" placeholder="Enter a url..." class="redirect-input">
+            <button class="add-btn-r">+ Add Site (Enter)</button>
+        </div>
         <div class="redirects">Loading...</div>
 
-        <script src="options.js"></script>
+        <h2>Timer</h2>
+        <p>You will only be able to be on each website on the blacklist for a set amount of time in timer mode.</p>
+        <label>
+            Time (in minutes):
+            <input type="number" class="timer-time" placeholder="Decimals, and numbers only.">
+        </label>
+
+        <button class="clear">Reset Settings</button>
+        <button class="clear-blacklist">Reset Blacklist</button>
+        <button class="clear-redirects">Reset Redirect List</button>
     </div>
+
+    <script src="options.js"></script>
 </body>
 </html>

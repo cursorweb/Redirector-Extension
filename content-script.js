@@ -8,7 +8,7 @@ chrome.storage.sync.get(keys, options => {
     }
 
     if (enabled == 1) {
-        const blacklist = ["www.reddit.com", "www.youtube.com", "discord.com"];
+        const blacklist = ["www.reddit.com", "www.youtube.com", "discord.com", "twitter.com"];
         const redirect = "https://classroom.google.com/";
 
         for (const item of blacklist) {
