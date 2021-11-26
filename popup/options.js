@@ -9,6 +9,8 @@ const blacklists = document.querySelector(".blacklists");
 const redirects = document.querySelector(".redirects");
 
 const clearBtn = document.querySelector(".clear");
+const clearblBtn = document.querySelector(".clear-blacklist");
+const clearrBtn = document.querySelector(".clear-redirects");
 
 
 clearBtn.addEventListener("click", () => {
@@ -16,6 +18,23 @@ clearBtn.addEventListener("click", () => {
     chrome.storage.sync.set(defaultOptions);
     updateSettings();
 });
+
+clearblBtn.addEventListener("click", () => {
+    if (!confirm("This will reset your blacklist. Are you sure?")) return;
+    chrome.storage.sync.set({
+        blacklist: defaultOptions.blacklist
+    });
+    updateSettings();
+});
+
+clearrBtn.addEventListener("click", () => {
+    if (!confirm("This will reset your redirects. Are you sure?")) return;
+    chrome.storage.sync.set({
+        redirects: defaultOptions.redirects
+    });
+    updateSettings();
+});
+
 
 function updateSettings() {
     chrome.storage.sync.get(keys, options => {
