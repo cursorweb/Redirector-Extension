@@ -6,7 +6,7 @@ const defaultOptions = {
      */
     enabled: 1,
     blacklist: ["www.youtube.com", "www.reddit.com", "discord.com", "www.instagram.com", "www.spotify.com", "www.facebook.com", "twitter.com"],
-    redirects: ["classroom.google.com", "www.desmos.com", "trello.com", "keep.google.com"],
+    redirects: ["https://classroom.google.com", "https://www.desmos.com", "https://trello.com", "https://keep.google.com"],
     time: 20
 };
 
