@@ -12,6 +12,12 @@ const clearBtn = document.querySelector(".clear");
 const clearblBtn = document.querySelector(".clear-blacklist");
 const clearrBtn = document.querySelector(".clear-redirects");
 
+const inputbl = document.querySelector(".blacklist-input");
+const inputr = document.querySelector(".redirect-input");
+
+const addBtnbl = document.querySelector(".add-btn-bl");
+const addBtnr = document.querySelector(".add-btn-r");
+
 const timeAmt = document.querySelector(".timer-time");
 
 const saveBtns = document.querySelectorAll(".save");
@@ -43,10 +49,31 @@ clearrBtn.addEventListener("click", () => {
 saveBtns.forEach(el => el.addEventListener("click", () => {
     chrome.storage.sync.set({
         time: (Number(timeAmt) || 20) * 60 * 1000,
-        blacklist: getBlacklist(),
-        redirects: getRedirect()
+        blacklist: getInputsFor(".blacklisti"),
+        redirects: getInputsFor(".redirecti")
     });
 }));
+
+
+addBtnbl.addEventListener("click", () => {
+    const input = document.createElement("input");
+    input.value = inputbl.value;
+    input.classList.add("input", "blacklisti");
+    input.placeholder = placeholderbl;
+    inputbl.value = "";
+
+    blacklists.appendChild(input);
+});
+
+addBtnr.addEventListener("click", () => {
+    const input = document.createElement("input");
+    input.value = inputr.value;
+    input.classList.add("input", "redirecti");
+    input.placeholder = placeholderr;
+    inputr.value = "";
+
+    redirects.appendChild(input);
+});
 
 
 function updateSettings() {
@@ -73,22 +100,11 @@ function updateSettings() {
     });
 }
 
-function getBlacklist() {
-    const out = [];
-    const blacklists = document.querySelectorAll(".blacklisti");
-
-    blacklists.forEach(el => out.push(el.value));
-
-    return out;
-}
-
-function getRedirect() {
-    const out = [];
-    const redirects = document.querySelectorAll(".redirecti");
-
-    redirects.forEach(el => out.push(el.value));
-
-    return out;
+function getInputsFor(cls) {
+    return [...document.querySelectorAll(`${cls}`)]
+        .map(el => el.value.trim())
+        .filter(e => e != "")
+    ;
 }
 
 updateSettings();
