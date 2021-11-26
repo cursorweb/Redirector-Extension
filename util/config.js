@@ -7,7 +7,7 @@ const defaultOptions = {
     enabled: 1,
     blacklist: ["www.youtube.com", "www.reddit.com", "discord.com", "www.instagram.com", "www.spotify.com", "www.facebook.com", "twitter.com"],
     redirects: ["classroom.google.com", "www.desmos.com", "trello.com", "keep.google.com"],
-    time: 20 * 60 * 1000 // 20 minutes
+    time: 20
 };
 
 const keys = Object.keys(defaultOptions);

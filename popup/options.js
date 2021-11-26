@@ -48,7 +48,7 @@ clearrBtn.addEventListener("click", () => {
 
 saveBtns.forEach(el => el.addEventListener("click", () => {
     chrome.storage.sync.set({
-        time: (Number(timeAmt) || 20) * 60 * 1000,
+        time: (Number(timeAmt.value) || 20),
         blacklist: getInputsFor(".blacklisti"),
         redirects: getInputsFor(".redirecti")
     });
@@ -97,6 +97,8 @@ function updateSettings() {
 
             redirects.appendChild(el);
         }
+
+        timeAmt.value = options.time;
     });
 }
 

@@ -19,7 +19,8 @@
     "content_scripts": [
         {
             "js": [
-                "popup/util/config.js",
+                "util/config.js",
+                "util/acc-int.js",
                 "content-script.js"
             ],
             "matches": [
