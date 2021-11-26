@@ -10,7 +10,6 @@ chrome.storage.sync.get(keys, options => {
     if (enabled == 1) {
         redirect();
     } else if (enabled == 2) {
-        alert(options.time);
         setTimeout(redirect, options.time * 60 * 1e3);
     }
 
