@@ -8,8 +8,8 @@ chrome.storage.sync.get(keys, options => {
     }
 
     if (enabled == 1) {
-        const blacklist = ["www.reddit.com", "www.youtube.com", "discord.com", "twitter.com"];
-        const redirect = "https://classroom.google.com/";
+        const blacklist = options.blacklist;
+        const redirect = options.redirects[Math.floor(Math.random() * options.redirects.length)];
 
         for (const item of blacklist) {
             if (location.host.toLowerCase() == item.toLowerCase()) {
