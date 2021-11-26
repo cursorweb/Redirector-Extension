@@ -12,6 +12,10 @@ const clearBtn = document.querySelector(".clear");
 const clearblBtn = document.querySelector(".clear-blacklist");
 const clearrBtn = document.querySelector(".clear-redirects");
 
+const timeAmt = document.querySelector(".timer-time");
+
+const saveBtns = document.querySelectorAll(".save");
+
 
 clearBtn.addEventListener("click", () => {
     if (!confirm("This will reset all settings. Are you sure?")) return;
@@ -36,12 +40,21 @@ clearrBtn.addEventListener("click", () => {
 });
 
 
+saveBtns.forEach(el => el.addEventListener("click", () => {
+    chrome.storage.sync.set({
+        time: (Number(timeAmt) || 20) * 60 * 1000,
+        blacklist: getBlacklist(),
+        redirects: getRedirect()
+    });
+}));
+
+
 function updateSettings() {
     chrome.storage.sync.get(keys, options => {
         blacklists.textContent = "";
         for (const site of options.blacklist) {
             const el = document.createElement("input");
-            el.classList.add("input", "blacklist");
+            el.classList.add("input", "blacklisti");
             el.value = site;
             el.placeholder = placeholderbl;
 
@@ -51,13 +64,31 @@ function updateSettings() {
         redirects.textContent = "";
         for (const site of options.redirects) {
             const el = document.createElement("input");
-            el.classList.add("input", "redirects");
+            el.classList.add("input", "redirecti");
             el.value = site;
             el.placeholder = placeholderr;
 
             redirects.appendChild(el);
         }
     });
+}
+
+function getBlacklist() {
+    const out = [];
+    const blacklists = document.querySelectorAll(".blacklisti");
+
+    blacklists.forEach(el => out.push(el.value));
+
+    return out;
+}
+
+function getRedirect() {
+    const out = [];
+    const redirects = document.querySelectorAll(".redirecti");
+
+    redirects.forEach(el => out.push(el.value));
+
+    return out;
 }
 
 updateSettings();
