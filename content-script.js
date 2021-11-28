@@ -19,8 +19,11 @@ chrome.storage.sync.get(keys, options => {
         const blacklist = options.blacklist;
         const redirect = makehttps(redirects[Math.floor(Math.random() * redirects.length)]);
 
+        const host = location.host.toLowerCase();
+
         for (const item of blacklist) {
-            if (location.host.toLowerCase() == item.toLowerCase()) {
+            const itm = item.toLowerCase();
+            if (host == itm || host.includes(itm)) {
                 location.href = redirect;
             }
         }
