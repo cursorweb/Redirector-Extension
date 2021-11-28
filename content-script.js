@@ -23,7 +23,7 @@ chrome.storage.sync.get(keys, options => {
 
         for (const item of blacklist) {
             const itm = item.toLowerCase();
-            if (host == itm || host.includes(itm)) {
+            if (host == itm || itm.includes(host) || new RegExp(itm).test(host)) {
                 location.href = redirect;
             }
         }
