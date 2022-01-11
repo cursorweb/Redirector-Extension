@@ -23,9 +23,11 @@ chrome.storage.sync.get(keys, options => {
             btn.disabled = false;
             updateBtn();
 
-            chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-                chrome.tabs.reload(tabs[0].id);
-            });
+            chrome.windows.getAll({ populate: true }, windows =>
+                windows.forEach(window =>
+                    window.tabs.forEach(tab => chrome.tabs.reload(tab.id))
+                )
+            );
         });
     });
 
